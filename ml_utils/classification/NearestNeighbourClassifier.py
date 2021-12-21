@@ -28,12 +28,11 @@ class NearestNeighbourClassifier(Classifier):
         """
         min_elem_indices = np.empty(len(x), dtype=int)
         for i, e in enumerate(x):
-            min_index, min_distance = 0, np.inf
+            distances = np.empty(len(self.x))
             for j, v in enumerate(self.x):
                 if j == i:
-                    continue
-                if np.linalg.norm(e - v) < min_distance:
-                    min_index = j
-                    min_distance = np.linalg.norm(e - v)
-            min_elem_indices[i] = min_index
+                    distances[j] = np.inf
+                else:
+                    distances[j] = np.linalg.norm(e - v)
+            min_elem_indices[i] = np.argmin(distances)
         return self.y[min_elem_indices]
