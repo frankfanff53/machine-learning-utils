@@ -1,7 +1,8 @@
 import numpy as np
+from numpy.random import default_rng, Generator
 
 
-def read_dataset(filepath):
+def read_dataset(filepath: str) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """ Read in the dataset from the specified filepath
 
     Args:
@@ -27,7 +28,7 @@ def read_dataset(filepath):
     return np.array(x), y, classes
 
 
-def shuffle_dataset(x, y, rng=np.random.default_rng()):
+def shuffle_dataset(x: np.ndarray, y: np.ndarray, rng: Generator = default_rng()) -> tuple[np.ndarray]:
     """Shuffle dataset to mix the data with different labels.
 
     Args:
@@ -45,8 +46,8 @@ def shuffle_dataset(x, y, rng=np.random.default_rng()):
     return x[indices], y[indices]
 
 
-def split_dataset(x, y, test_proportion, rng=np.random.default_rng()):
-    """ Split dataset into training and test sets, according to the given 
+def split_dataset(x: np.ndarray, y: np.ndarray, test_proportion: np.float64, rng: Generator = default_rng()) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """ Split dataset into training and test sets, according to the given
         test set proportion.
 
     Args:
