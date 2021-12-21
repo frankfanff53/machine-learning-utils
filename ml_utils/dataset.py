@@ -46,7 +46,7 @@ def shuffle_dataset(x: np.ndarray, y: np.ndarray, rng: Generator = default_rng()
     return x[indices], y[indices]
 
 
-def split_dataset(x: np.ndarray, y: np.ndarray, test_proportion: np.float64, rng: Generator = default_rng()) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+def split_dataset(x: np.ndarray, y: np.ndarray, test_proportion: float, rng: Generator = default_rng()) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """ Split dataset into training and test sets, according to the given
         test set proportion.
 
