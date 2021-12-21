@@ -1,3 +1,4 @@
 from .Classifier import Classifier
 from .RandomClassifier import RandomClassifier
 from .NearestNeighbourClassifier import NearestNeighbourClassifier
+from .KNNClassifier import KNNClassifier

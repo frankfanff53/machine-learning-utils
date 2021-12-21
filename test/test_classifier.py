@@ -26,10 +26,20 @@ def test_nn_classifier(filepath):
     nn_classifier = classification.NearestNeighbourClassifier()
     nn_classifier.fit(x_train, y_train)
     nn_predictions = nn_classifier.predict(x_test)
-    print(nn_predictions)
     assert np.allclose(nn_predictions, np.array(
         [1, 2, 1, 2, 0, 1, 2, 0, 0, 2, 2, 2, 2, 0, 2,
             0, 0, 2, 1, 1, 2, 1, 1, 1, 1, 0, 0, 0, 0, 0]
+    ))
+
+
+@pytest.mark.parametrize('filepath', [DATASET_PATH])
+def test_knn_classifier(filepath):
+    knn_classifier = classification.KNNClassifier()
+    knn_classifier.fit(x_train, y_train)
+    knn_predictions = knn_classifier.predict(x_test)
+    assert np.allclose(knn_predictions, np.array(
+        [1, 2, 1, 2, 0, 1, 2, 0, 0, 2, 2, 2, 2, 0, 2,
+            0, 0, 2, 2, 1, 2, 1, 1, 1, 1, 0, 0, 0, 0, 0]
     ))
 
 
