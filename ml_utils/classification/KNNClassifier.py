@@ -3,7 +3,7 @@ from .Classifier import Classifier
 
 
 class KNNClassifier(Classifier):
-    def __init__(self, k=5) -> None:
+    def __init__(self, k: int = 5) -> None:
         """ K-NN Classifier.
 
         Args:
@@ -13,7 +13,7 @@ class KNNClassifier(Classifier):
         self.x = np.array([])
         self.y = np.array([])
 
-    def fit(self, x, y):
+    def fit(self, x: np.ndarray, y: np.ndarray) -> None:
         """ Fit the training data to the classifier.
 
         Args:
@@ -23,7 +23,7 @@ class KNNClassifier(Classifier):
         self.x = x
         self.y = y
 
-    def predict(self, x):
+    def predict(self, x: np.ndarray) -> float:
         """ Perform prediction given some examples.
 
         Args:

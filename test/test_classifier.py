@@ -43,6 +43,17 @@ def test_knn_classifier(filepath):
     ))
 
 
+@pytest.mark.parametrize('filepath', [DATASET_PATH])
+def test_weighted_knn_classifier(filepath):
+    wknn_classifier = classification.WeightedKNNClassifier()
+    wknn_classifier.fit(x_train, y_train)
+    wknn_predictions = wknn_classifier.predict(x_test)
+    assert np.allclose(wknn_predictions, np.array(
+        [1, 2, 1, 2, 0, 1, 2, 0, 0, 2, 2, 2, 2, 0, 2,
+            0, 0, 2, 2, 1, 2, 1, 1, 1, 1, 0, 0, 0, 0, 0]
+    ))
+
+
 if __name__ == '__main__':
     import sys
     pytest.main(sys.argv)
